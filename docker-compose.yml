@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ultroid:
+    build: .
+    container_name: ultroid-bot
+    restart: always
+    volumes:
+      - ./data:/app/Ultroid/data
+      - ./session.txt:/app/Ultroid/session.txt
+    environment:
+      - TZ=UTC
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 

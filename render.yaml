@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: ultroid-bot
+    env: docker
+    region: oregon
+    plan: free
+    healthCheckPath: /
+    buildCommand: docker build -t ultroid .
+    startCommand: docker run -d --name ultroid-bot ultroid
+    envVars:
+      - key: TZ
+        value: UTC
+    disk:
+      name: data
+      mountPath: /app/Ultroid/data
+      sizeGB: 1 
